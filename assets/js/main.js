@@ -2,6 +2,7 @@
 const grid = document.getElementById('grid');
 let gameCards = [];
 let cardsFlipped = [];
+let cardsFound = [];
 let clicks = 0;
 
 const cryptocurrencies = [
@@ -49,6 +50,13 @@ const shuffleArray = arr =>
 // Reset everything
 const clearGame = () => {
   gameCards = [];
+  cardsFlipped = [];
+  cardsFound = [];
+  clicks = 0;
+}
+
+// Reset round
+const clearRound = () => {
   cardsFlipped = [];
   clicks = 0;
 }
@@ -105,6 +113,17 @@ const handleOpenCard = (e) => {
     // add to cards flipped per round
     cardsFlipped.push(cID);
     clicks++;
+  }
+
+  if (clicks == 2) {
+    if (cardsFlipped[0] === cardsFlipped[1]) {
+      cardsFound.push(...cardsFlipped);
+      clearRound();
+
+      console.log(cardsFound);
+    } else {
+      console.log('Not equal');
+    }
   }
 }
 
