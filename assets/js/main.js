@@ -5,6 +5,7 @@ let cardsFlipped = [];
 let cardsFound = [];
 let clicks = 0;
 let roundStart = false;
+let rounds = 0;
 
 const cryptocurrencies = [
   {
@@ -53,6 +54,7 @@ const clearGame = () => {
   gameCards = [];
   cardsFlipped = [];
   cardsFound = [];
+  rounds = 0;
   clicks = 0;
 }
 
@@ -65,6 +67,7 @@ const clearRound = () => {
 // Reset the game grid and generate new cards
 const startGame = () => {
   clearGame();
+  updateRounds();
 
   // Create grid array and shuffle it
   gameCards.push(...cryptocurrencies, ...cryptocurrencies);
@@ -109,6 +112,8 @@ const handleOpenCard = (e) => {
   // When new round starts set it to true
   clicks === 0 ? roundStart = true : null;
 
+  console.log(rounds);
+
   if (roundStart) {
     // Allow to perform only 2 clicks per round
     if (clicks < 2) {
@@ -131,14 +136,14 @@ const handleOpenCard = (e) => {
 
     if (clicks == 2) {
       roundStart = false;
-      console.log(cardsFlipped);
+      rounds++;
+      updateRounds();
 
       if (cardsFlipped[0].id === cardsFlipped[1].id) {
         cardsFound.push(...cardsFlipped);
         clearRound();
       } else {
         // Clear the deck and hide cards
-
         setTimeout(() => {
           cardsFlipped.forEach((el) => {
             document.getElementById(el.box).classList.remove('show');
@@ -148,11 +153,22 @@ const handleOpenCard = (e) => {
 
       }
     }
+
+    // Here the game is finished
+    if (cardsFound.length === 16) {
+      alert('Game completed');
+    }
   }
 
+}
+
+const updateRounds = () => {
+  document.getElementById('rounds').innerText = rounds;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   // Start grid when document has loaded
   startGame();
+
+
 });
