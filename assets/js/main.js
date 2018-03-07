@@ -7,6 +7,9 @@ let clicks = 0;
 let roundStart = false;
 let rounds = 0;
 
+let startTime = 0;
+let endTime = 0;
+
 const cryptocurrencies = [
   {
     name: "Bitcoin",
@@ -66,6 +69,8 @@ const clearRound = () => {
 
 // Reset the game grid and generate new cards
 const startGame = () => {
+  startTime = performance.now();
+
   clearGame();
   updateRounds();
 
@@ -156,6 +161,8 @@ const handleOpenCard = (e) => {
 
     // Here the game is finished
     if (cardsFound.length === 16) {
+      endTime = performance.now();
+      console.log('Performance', gameTime(startTime, endTime));
       alert('Game completed');
     }
   }
@@ -164,6 +171,10 @@ const handleOpenCard = (e) => {
 
 const updateRounds = () => {
   document.getElementById('rounds').innerText = rounds;
+}
+
+const gameTime = (startTime, endTime) => {
+  return (endTime - startTime) / 1000;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
