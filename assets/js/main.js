@@ -4,6 +4,7 @@ let gameCards = [];
 let cardsFlipped = [];
 let cardsFound = [];
 let clicks = 0;
+let roundStart = false;
 
 const cryptocurrencies = [
   {
@@ -84,6 +85,9 @@ const startGame = () => {
     front.classList.add('front');
     back.classList.add('back');
 
+    // Set gridbox numbering
+    gridBox.setAttribute('id', i);
+
     // Set img attributes
     gridImg.setAttribute('src', `/assets/svg/${gameCards[i].id}.svg`);
     gridImg.setAttribute('alt', `${gameCards[i].name}`);
@@ -102,29 +106,50 @@ const startGame = () => {
 }
 
 const handleOpenCard = (e) => {
-  // Allow to perform only 2 clicks per round
-  if (clicks < 2) {
-    const parentBox = e.target.parentNode;
-    parentBox.classList.add('show');
+  // When new round starts set it to true
+  clicks === 0 ? roundStart = true : null;
 
-    const back = parentBox.lastChild;
-    const cID = back.lastChild.getAttribute('cID');
+  if (roundStart) {
+    // Allow to perform only 2 clicks per round
+    if (clicks < 2) {
+      const parentBox = e.target.parentNode;
+      const box = parentBox.getAttribute('id');
+      parentBox.classList.add('show');
 
-    // add to cards flipped per round
-    cardsFlipped.push(cID);
-    clicks++;
-  }
+      const back = parentBox.lastChild;
+      const cID = back.lastChild.getAttribute('cID');
 
-  if (clicks == 2) {
-    if (cardsFlipped[0] === cardsFlipped[1]) {
-      cardsFound.push(...cardsFlipped);
-      clearRound();
+      const card = {
+        id: cID,
+        box: box
+      }
 
-      console.log(cardsFound);
-    } else {
-      console.log('Not equal');
+      // add to cards flipped per round
+      cardsFlipped.push(card);
+      clicks++;
+    }
+
+    if (clicks == 2) {
+      roundStart = false;
+      console.log(cardsFlipped);
+
+      if (cardsFlipped[0].id === cardsFlipped[1].id) {
+        cardsFound.push(...cardsFlipped);
+        clearRound();
+      } else {
+        // Clear the deck and hide cards
+
+        setTimeout(() => {
+          cardsFlipped.forEach((el) => {
+            document.getElementById(el.box).classList.remove('show');
+            clearRound();
+          })
+        }, 1000)
+
+      }
     }
   }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
