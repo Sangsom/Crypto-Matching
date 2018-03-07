@@ -73,4 +73,7 @@ const startGame = () => {
   }
 }
 
-
+document.addEventListener("DOMContentLoaded", () => {
+  // Start grid when document has loaded
+  startGame();
+});
