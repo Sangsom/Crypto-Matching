@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
-:root {
-  --boxSize: 100px;
-  --boxRadius: 8px;
-}
+$boxSize: 100px;
+$boxRadius: 8px;
 
 html {
   box-sizing: border-box;
@@ -36,17 +34,17 @@ body {
 .grid {
   display: inline-grid;
   background: salmon;
-  grid-template-columns: repeat(4, minmax(var(--boxSize), var(--boxSize)));
-  grid-auto-rows: minmax(var(--boxSize), var(--boxSize));
+  grid-template-columns: repeat(4, minmax($boxSize, $boxSize));
+  grid-auto-rows: minmax($boxSize, $boxSize);
   grid-gap: 10px;
   padding: 10px;
-  border-radius: var(--boxRadius);
+  border-radius: $boxRadius;
 }
 
 .grid-box {
   display: flex;
   background: orange;
-  border-radius: var(--boxRadius);
+  border-radius: $boxRadius;
   justify-content: center;
   align-items: center;
 }
