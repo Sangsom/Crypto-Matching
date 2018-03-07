@@ -58,17 +58,23 @@ const startGame = () => {
   for (let i = 0; i < gameCards.length; i++) {
     // Create variables
     const gridBox = document.createElement('div');
+    const front = document.createElement('div');
+    const back = document.createElement('div');
     const gridImg = document.createElement('img');
 
     // Add class
     gridBox.classList.add("grid-box");
+    front.classList.add('front');
+    back.classList.add('back');
 
     // Set img attributes
     gridImg.setAttribute('src', `/assets/svg/${gameCards[i].id}.svg`);
     gridImg.setAttribute('alt', `${gameCards[i].name}`);
 
     // Create html and append to #grid
-    gridBox.appendChild(gridImg);
+    back.appendChild(gridImg);
+    gridBox.appendChild(front);
+    gridBox.appendChild(back);
     grid.appendChild(gridBox);
   }
 }
@@ -76,4 +82,15 @@ const startGame = () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Start grid when document has loaded
   startGame();
+
+  const gridBox = document.getElementsByClassName('grid-box');
+
+  for (let box of gridBox) {
+    box.addEventListener("click", (e) => {
+      const parentBox = e.target.parentNode;
+
+      parentBox.classList.add('show');
+    })
+  }
+
 });
