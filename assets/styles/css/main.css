@@ -22,7 +22,7 @@ body {
   align-items: center;
   flex-direction: column; }
 
-.grid {
+#grid {
   display: inline-grid;
   background: salmon;
   grid-template-columns: repeat(4, minmax(100px, 100px));

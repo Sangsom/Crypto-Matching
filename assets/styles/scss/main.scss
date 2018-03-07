@@ -31,7 +31,7 @@ body {
 }
 
 // Grid
-.grid {
+#grid {
   display: inline-grid;
   background: salmon;
   grid-template-columns: repeat(4, minmax($boxSize, $boxSize));
