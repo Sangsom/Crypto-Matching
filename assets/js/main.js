@@ -1,6 +1,7 @@
 
 const grid = document.getElementById('grid');
 let gameCards = [];
+let cardsFlipped = [];
 let clicks = 0;
 
 const cryptocurrencies = [
@@ -48,6 +49,7 @@ const shuffleArray = arr =>
 // Reset everything
 const clearGame = () => {
   gameCards = [];
+  cardsFlipped = [];
   clicks = 0;
 }
 
@@ -77,19 +79,10 @@ const startGame = () => {
     // Set img attributes
     gridImg.setAttribute('src', `/assets/svg/${gameCards[i].id}.svg`);
     gridImg.setAttribute('alt', `${gameCards[i].name}`);
+    gridImg.setAttribute('cID', gameCards[i].id);
 
     // Add event listeners to grid boxes
-    gridBox.addEventListener('click', (e) => {
-
-      // Allow to perform only 2 clicks per round
-      if (clicks < 2) {
-        const parentBox = e.target.parentNode;
-        parentBox.classList.add('show');
-        clicks++;
-      }
-
-
-    })
+    gridBox.addEventListener('click', handleOpenCard);
 
     // Create html and append to #grid
     back.appendChild(gridImg);
@@ -97,6 +90,21 @@ const startGame = () => {
     gridBox.appendChild(back);
     grid.appendChild(gridBox);
 
+  }
+}
+
+const handleOpenCard = (e) => {
+  // Allow to perform only 2 clicks per round
+  if (clicks < 2) {
+    const parentBox = e.target.parentNode;
+    parentBox.classList.add('show');
+
+    const back = parentBox.lastChild;
+    const cID = back.lastChild.getAttribute('cID');
+
+    // add to cards flipped per round
+    cardsFlipped.push(cID);
+    clicks++;
   }
 }
 
