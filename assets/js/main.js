@@ -1,6 +1,7 @@
 
 const grid = document.getElementById('grid');
 let gameCards = [];
+let clicks = 0;
 
 const cryptocurrencies = [
   {
@@ -44,11 +45,17 @@ const shuffleArray = arr =>
     .sort((a, b) => a[0] - b[0])
     .map(a => a[1]);
 
+// Reset everything
+const clearGame = () => {
+  gameCards = [];
+  clicks = 0;
+}
 
 // Reset the game grid and generate new cards
 const startGame = () => {
+  clearGame();
+
   // Create grid array and shuffle it
-  gameCards = [];
   gameCards.push(...cryptocurrencies, ...cryptocurrencies);
   gameCards = shuffleArray(gameCards);
 
@@ -71,26 +78,29 @@ const startGame = () => {
     gridImg.setAttribute('src', `/assets/svg/${gameCards[i].id}.svg`);
     gridImg.setAttribute('alt', `${gameCards[i].name}`);
 
+    // Add event listeners to grid boxes
+    gridBox.addEventListener('click', (e) => {
+
+      // Allow to perform only 2 clicks per round
+      if (clicks < 2) {
+        const parentBox = e.target.parentNode;
+        parentBox.classList.add('show');
+        clicks++;
+      }
+
+
+    })
+
     // Create html and append to #grid
     back.appendChild(gridImg);
     gridBox.appendChild(front);
     gridBox.appendChild(back);
     grid.appendChild(gridBox);
+
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   // Start grid when document has loaded
   startGame();
-
-  const gridBox = document.getElementsByClassName('grid-box');
-
-  for (let box of gridBox) {
-    box.addEventListener("click", (e) => {
-      const parentBox = e.target.parentNode;
-
-      parentBox.classList.add('show');
-    })
-  }
-
 });
