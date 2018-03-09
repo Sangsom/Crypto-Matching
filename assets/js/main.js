@@ -1,5 +1,6 @@
 
 const grid = document.getElementById('grid');
+const modal = document.querySelector('.modal');
 let gameCards = [];
 let cardsFlipped = [];
 let cardsFound = [];
@@ -169,6 +170,8 @@ const handleOpenCard = (e) => {
 
     // Here the game is finished
     if (cardsFound.length === 16) {
+      modal.classList.add('is-active');
+
       endTime = performance.now();
       console.log('Performance', gameTime(startTime, endTime));
       alert('Game completed');
@@ -183,6 +186,10 @@ const updateRounds = () => {
 
 const gameTime = (startTime, endTime) => {
   return (endTime - startTime) / 1000;
+}
+
+const closeModal = () => {
+  modal.classList.remove('is-active');
 }
 
 document.addEventListener("DOMContentLoaded", () => {
