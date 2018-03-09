@@ -178,7 +178,7 @@ const handleOpenCard = (e) => {
 }
 
 const updateRounds = () => {
-  //document.getElementById('rounds').innerText = rounds;
+  document.getElementById('rounds').innerText = rounds;
 }
 
 const gameTime = (startTime, endTime) => {
