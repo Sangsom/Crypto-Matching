@@ -67,6 +67,14 @@ const clearRound = () => {
   clicks = 0;
 }
 
+const loadNewGame = () => {
+  const gameContainer = document.getElementById('game-container');
+  const startBtn = document.getElementById('start-button');
+  gameContainer.style.visibility = "visible";
+  startBtn.style.display = "none";
+  startGame();
+}
+
 // Reset the game grid and generate new cards
 const startGame = () => {
   startTime = performance.now();
@@ -170,7 +178,7 @@ const handleOpenCard = (e) => {
 }
 
 const updateRounds = () => {
-  document.getElementById('rounds').innerText = rounds;
+  //document.getElementById('rounds').innerText = rounds;
 }
 
 const gameTime = (startTime, endTime) => {
@@ -178,8 +186,6 @@ const gameTime = (startTime, endTime) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Start grid when document has loaded
-  startGame();
-
-
+  const restartBtn = document.getElementById('restart');
+  restartBtn.addEventListener('click', startGame)
 });
