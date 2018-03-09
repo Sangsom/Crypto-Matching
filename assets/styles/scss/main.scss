@@ -23,7 +23,7 @@ body {
   padding: 0;
 }
 
-.container {
+.container-section {
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -58,11 +58,14 @@ body {
     height:100%;
     position:relative;
     float:left;    
-    margin-left:5px;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+}
+
+#game-container {
+  visibility: hidden;
 }
 
 .grid-box:hover {
