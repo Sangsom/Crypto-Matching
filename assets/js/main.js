@@ -192,27 +192,28 @@ const endGame = () => {
   time.innerText = gameTime(startTime, endTime);
   moves.innerText = rounds;
 
+  // Set star rating
+  if (rounds < 18) {
+    setStars(3);
+  } else if (rounds < 25) {
+    setStars(2);
+  } else {
+    setStars(1);
+  }
+
+}
+
+const setStars = (n) => {
   const stars = document.getElementById('stars');
   const star = stars.children;
 
-  star.item(0).classList.remove('checked');
-  star.item(1).classList.remove('checked');
-  star.item(2).classList.remove('checked');
-
-  if (rounds < 18) {
-    // 3 stars
-    star.item(0).classList.add('checked');
-    star.item(1).classList.add('checked');
-    star.item(2).classList.add('checked');
-  } else if (rounds < 25) {
-    // 2 stars
-    star.item(0).classList.add('checked');
-    star.item(1).classList.add('checked');
-  } else {
-    // 1 star
-    star.item(0).classList.add('checked');
+  for (let i = 0; i < star.length; i++) {
+    star.item(i).classList.remove('checked');
   }
 
+  for (let i = 0; i < n; i++) {
+    star.item(i).classList.add('checked');
+  }
 }
 
 const updateRounds = () => {
@@ -220,7 +221,7 @@ const updateRounds = () => {
 }
 
 const gameTime = (startTime, endTime) => {
-  return (endTime - startTime) / 1000;
+  return parseFloat((endTime - startTime) / 1000).toFixed(2);
 }
 
 const closeModal = () => {
