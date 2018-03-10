@@ -191,7 +191,28 @@ const endGame = () => {
 
   time.innerText = gameTime(startTime, endTime);
   moves.innerText = rounds;
-  //console.log('Performance', gameTime(startTime, endTime));
+
+  const stars = document.getElementById('stars');
+  const star = stars.children;
+
+  star.item(0).classList.remove('checked');
+  star.item(1).classList.remove('checked');
+  star.item(2).classList.remove('checked');
+
+  if (rounds < 18) {
+    // 3 stars
+    star.item(0).classList.add('checked');
+    star.item(1).classList.add('checked');
+    star.item(2).classList.add('checked');
+  } else if (rounds < 25) {
+    // 2 stars
+    star.item(0).classList.add('checked');
+    star.item(1).classList.add('checked');
+  } else {
+    // 1 star
+    star.item(0).classList.add('checked');
+  }
+
 }
 
 const updateRounds = () => {

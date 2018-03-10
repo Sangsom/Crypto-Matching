@@ -49,11 +49,16 @@
         <p class="modal-card-title has-text-centered">You WON!</p>
         <button class="modal-close is-large" onclick="closeModal()" aria-label="close"></button>
       </header>
-      <section class="modal-card-body">
+      <section class="modal-card-body has-text-centered">
         <p class="is-size-5">You completed game in
-          <span id="time"></span> seconds and in
-          <span id="moves"></span> moves.
+          <span id="time">0</span> seconds and in
+          <span id="moves">0</span> moves.
         </p>
+        <div id="stars" class="has-text-centered">
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </div>
       </section>
       <footer class="modal-card-foot">
         <a class="card-footer-item" onclick="loadNewGame()">Reload</a>
