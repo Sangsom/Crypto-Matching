@@ -170,14 +170,22 @@ const handleOpenCard = (e) => {
 
     // Here the game is finished
     if (cardsFound.length === 16) {
-      modal.classList.add('is-active');
-
-      endTime = performance.now();
-      console.log('Performance', gameTime(startTime, endTime));
-      alert('Game completed');
+      endGame();
     }
   }
 
+}
+
+const endGame = () => {
+  modal.classList.add('is-active');
+  endTime = performance.now();
+
+  const time = document.getElementById('time');
+  const moves = document.getElementById('moves');
+
+  time.innerText = gameTime(startTime, endTime);
+  moves.innerText = rounds;
+  //console.log('Performance', gameTime(startTime, endTime));
 }
 
 const updateRounds = () => {
