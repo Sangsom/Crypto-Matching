@@ -71,6 +71,12 @@ const clearRound = () => {
 const loadNewGame = () => {
   const gameContainer = document.getElementById('game-container');
   const startBtn = document.getElementById('start-button');
+  const modal = document.querySelector('.modal');
+
+  if (modal.classList.contains('is-active')) {
+    modal.classList.remove('is-active');
+  }
+
   gameContainer.style.visibility = "visible";
   startBtn.style.display = "none";
   startGame();

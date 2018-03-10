@@ -50,13 +50,14 @@
         <button class="modal-close is-large" onclick="closeModal()" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        <p>You completed game in
+        <p class="is-size-5">You completed game in
           <span id="time"></span> seconds and in
           <span id="moves"></span> moves.
         </p>
       </section>
       <footer class="modal-card-foot">
-        Footers
+        <a class="card-footer-item" onclick="loadNewGame()">Reload</a>
+        <a class="card-footer-item" onclick="closeModal()">Exit</a>
       </footer>
     </div>
 
