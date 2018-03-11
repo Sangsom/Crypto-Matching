@@ -217,7 +217,8 @@ const setStars = (n) => {
 }
 
 const updateRounds = () => {
-  document.getElementById('rounds').innerText = rounds;
+  const rounds = document.getElementById('rounds');
+  rounds.innerText = rounds;
 }
 
 const gameTime = (startTime, endTime) => {
