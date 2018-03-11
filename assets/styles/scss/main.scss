@@ -47,8 +47,6 @@ body {
     perspective:1000;
 }
 
-
-
 .grid-box {
   display: flex;
   background: orange;
@@ -68,10 +66,6 @@ body {
 
 #game-container {
   visibility: hidden;
-}
-
-.grid-box:hover {
-  
 }
 
 .show {
@@ -95,6 +89,9 @@ body {
 }
 
 .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   -webkit-transform: rotateY(180deg);
     transform: rotateY( 180deg );
 }

@@ -73,6 +73,9 @@ body {
   background-size: cover; }
 
 .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 

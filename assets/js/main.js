@@ -132,8 +132,6 @@ const handleOpenCard = (e) => {
   // When new round starts set it to true
   clicks === 0 ? roundStart = true : null;
 
-  console.log(rounds);
-
   if (roundStart) {
     // Allow to perform only 2 clicks per round
     if (clicks < 2) {
@@ -217,8 +215,8 @@ const setStars = (n) => {
 }
 
 const updateRounds = () => {
-  const rounds = document.getElementById('rounds');
-  rounds.innerText = rounds;
+  const roundsEl = document.getElementById('rounds');
+  roundsEl.innerText = rounds;
 }
 
 const gameTime = (startTime, endTime) => {
