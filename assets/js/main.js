@@ -117,7 +117,7 @@ const startGame = () => {
     gridBox.setAttribute('id', i);
 
     // Set img attributes
-    gridImg.setAttribute('src', `/assets/svg/${gameCards[i].id}.svg`);
+    gridImg.setAttribute('src', `./assets/svg/${gameCards[i].id}.svg`);
     gridImg.setAttribute('alt', `${gameCards[i].name}`);
     gridImg.setAttribute('cID', gameCards[i].id);
 
@@ -186,7 +186,6 @@ const handleOpenCard = (e) => {
             document.getElementById(el.box).classList.remove('show', 'open');
           })
         }, 1500)
-
       }
     }
 
