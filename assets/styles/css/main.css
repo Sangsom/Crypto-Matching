@@ -14,7 +14,8 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  color: #faebd7; }
 
 .container-section {
   display: flex;
@@ -23,11 +24,14 @@ body {
   height: 100vh;
   align-items: center;
   flex-direction: column;
-  background: slateblue; }
+  background-image: linear-gradient(to bottom, rgba(53, 163, 236, 0.158), rgba(131, 24, 24, 0.5)), url(../../img/Blockchain-Background.jpg); }
+
+h1.title {
+  color: #faebd7; }
 
 #grid {
   display: inline-grid;
-  background: salmon;
+  background: rgba(250, 128, 114, 0.2);
   grid-template-columns: repeat(4, minmax(100px, 100px));
   grid-auto-rows: minmax(100px, 100px);
   grid-gap: 10px;
@@ -39,7 +43,7 @@ body {
 
 .grid-box {
   display: flex;
-  background: orange;
+  background: rgba(7, 117, 206, 0.3);
   border-radius: 8px;
   justify-content: center;
   align-items: center;
@@ -80,4 +84,7 @@ body {
   transform: rotateY(180deg); }
 
 .checked {
-  color: orange; }
+  color: #ffa500; }
+
+.stars-rating {
+  margin-bottom: 10px; }

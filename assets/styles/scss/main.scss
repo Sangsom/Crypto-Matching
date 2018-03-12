@@ -2,6 +2,10 @@
 
 $boxSize: 100px;
 $boxRadius: 8px;
+$gridBoxColor: rgba(7, 117, 206, 0.3);
+$checkedColor: #ffa500;
+$gridBgColor: rgba(250, 128, 114, .2);
+$textColor: #faebd7;
 
 html {
   box-sizing: border-box;
@@ -21,6 +25,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  color: $textColor;
 }
 
 .container-section {
@@ -30,13 +35,17 @@ body {
   height: 100vh;
   align-items: center;
   flex-direction: column;
-  background: slateblue;
+  background-image: linear-gradient(to bottom, rgba(53, 163, 236, 0.158), rgba(131, 24, 24, 0.5)), url(../../img/Blockchain-Background.jpg);
+}
+
+h1.title {
+  color: $textColor;
 }
 
 // Grid
 #grid {
   display: inline-grid;
-  background: salmon;
+  background: $gridBgColor;
   grid-template-columns: repeat(4, minmax($boxSize, $boxSize));
   grid-auto-rows: minmax($boxSize, $boxSize);
   grid-gap: 10px;
@@ -49,19 +58,19 @@ body {
 
 .grid-box {
   display: flex;
-  background: orange;
+  background: $gridBoxColor;
   border-radius: $boxRadius;
   justify-content: center;
   align-items: center;
   
   width:100%;
-    height:100%;
-    position:relative;
-    float:left;    
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+  height:100%;
+  position:relative;
+  float:left;    
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 #game-container {
@@ -98,5 +107,9 @@ body {
 
 // Star rating
 .checked {
-  color: orange;
+  color: $checkedColor;
+}
+
+.stars-rating {
+  margin-bottom: 10px;
 }
