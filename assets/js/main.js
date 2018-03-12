@@ -60,6 +60,8 @@ const clearGame = () => {
   cardsFound = [];
   rounds = 0;
   clicks = 0;
+
+  resetStarRating();
 }
 
 // Reset round
@@ -190,33 +192,41 @@ const endGame = () => {
   time.innerText = gameTime(startTime, endTime);
   moves.innerText = rounds;
 
-  // Set star rating
-  if (rounds < 18) {
-    setStars(3);
-  } else if (rounds < 25) {
-    setStars(2);
-  } else {
-    setStars(1);
-  }
-
+  const stars = document.querySelectorAll('.stars-rating').item(1);
+  setStars(stars);
 }
 
-const setStars = (n) => {
-  const stars = document.getElementById('stars');
+const updateStars = () => {
+  const stars = document.querySelector('.stars-rating');
+  setStars(stars);
+}
+
+const setStars = (stars) => {
   const star = stars.children;
 
-  for (let i = 0; i < star.length; i++) {
-    star.item(i).classList.remove('checked');
+  if (rounds >= 18) {
+    star.item(2).classList.remove('checked');
   }
+  if (rounds >= 25) {
+    star.item(1).classList.remove('checked');
+  }
+}
 
-  for (let i = 0; i < n; i++) {
-    star.item(i).classList.add('checked');
+const resetStarRating = () => {
+  const stars = document.querySelectorAll('.stars-rating');
+
+  for (let i = 0; i < stars.length; i++) {
+    for (let j = 0; j < stars[i].children.length; j++) {
+      let star = stars[i].children;
+      star.item(j).classList.add('checked');
+    }
   }
 }
 
 const updateRounds = () => {
   const roundsEl = document.getElementById('rounds');
   roundsEl.innerText = rounds;
+  updateStars();
 }
 
 const gameTime = (startTime, endTime) => {
