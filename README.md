@@ -1,6 +1,7 @@
 # Cryptomatching game
 This is game is created for a Front-End Developer Nanodegree project at Udacity.
 In this game you must find 8 pairs of cryptocurrency cards which are hidden in a 16 card grid. 
+Try it online on [Github Pages](https://sangsom.github.io/Crypto-Matching/).
 
 ## Game Features
 - Randomly generated grid every time the game is started.
