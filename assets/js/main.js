@@ -80,6 +80,9 @@ const loadNewGame = () => {
   }
 
   gameContainer.style.visibility = "visible";
+
+  gameContainer.classList.add('animated', 'rotateIn');
+
   startBtn.style.display = "none";
   startGame();
 }
