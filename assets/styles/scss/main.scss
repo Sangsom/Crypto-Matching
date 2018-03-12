@@ -2,10 +2,11 @@
 
 $boxSize: 100px;
 $boxRadius: 8px;
-$gridBoxColor: rgba(7, 117, 206, 0.3);
+$gridBoxColor: rgba(7, 117, 206, 0.1);
 $checkedColor: #ffa500;
-$gridBgColor: rgba(250, 128, 114, .2);
+$gridBgColor: rgba(250, 128, 114, 0);
 $textColor: #faebd7;
+$modalTextColor: #282828;
 
 html {
   box-sizing: border-box;
@@ -40,6 +41,10 @@ body {
 
 h1.title {
   color: $textColor;
+}
+
+.modal-card p {
+  color: $modalTextColor;
 }
 
 // Grid
@@ -101,6 +106,8 @@ h1.title {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   -webkit-transform: rotateY(180deg);
     transform: rotateY( 180deg );
 }

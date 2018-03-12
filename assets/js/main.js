@@ -143,6 +143,7 @@ const handleOpenCard = (e) => {
       const parentBox = e.target.parentNode;
       const box = parentBox.getAttribute('id');
       parentBox.classList.add('show');
+      parentBox.classList.add('open');
 
       const back = parentBox.lastChild;
       const cID = back.lastChild.getAttribute('cID');
@@ -163,16 +164,28 @@ const handleOpenCard = (e) => {
       updateRounds();
 
       if (cardsFlipped[0].id === cardsFlipped[1].id) {
+        cardsFlipped.forEach((el) => {
+          clearRound();
+          document.getElementById(el.box).classList.remove('open');
+        })
         cardsFound.push(...cardsFlipped);
         clearRound();
       } else {
-        // Clear the deck and hide cards
+        const openCards = document.getElementsByClassName('open');
         setTimeout(() => {
+          openCards[0].children.item(1).children[0].classList.add('animated', 'wobble');
+          openCards[1].children.item(1).children[0].classList.add('animated', 'wobble');
+        }, 500);
+
+        setTimeout(() => {
+          openCards[0].children.item(1).children[0].classList.remove('animated', 'wobble');
+          openCards[1].children.item(1).children[0].classList.remove('animated', 'wobble');
+
           cardsFlipped.forEach((el) => {
-            document.getElementById(el.box).classList.remove('show');
             clearRound();
+            document.getElementById(el.box).classList.remove('show', 'open');
           })
-        }, 1000)
+        }, 1500)
 
       }
     }
@@ -242,5 +255,19 @@ const closeModal = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const restartBtn = document.getElementById('restart');
-  restartBtn.addEventListener('click', startGame)
+  restartBtn.addEventListener('click', startGame);
 });
+
+// Create keyboard events
+window.addEventListener("keydown", (event) => {
+  if (event.defaultPrevented) {
+    return;
+  }
+
+  switch (event.key) {
+    case "Enter":
+      loadNewGame();
+    default:
+      return;
+  }
+})
