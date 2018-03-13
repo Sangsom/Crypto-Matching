@@ -145,6 +145,8 @@ const handleOpenCard = (e) => {
       parentBox.classList.add('show');
       parentBox.classList.add('open');
 
+      parentBox.removeEventListener("click", handleOpenCard);
+
       const back = parentBox.lastChild;
       const cID = back.lastChild.getAttribute('cID');
 
@@ -165,12 +167,14 @@ const handleOpenCard = (e) => {
 
       if (cardsFlipped[0].id === cardsFlipped[1].id) {
         cardsFlipped.forEach((el) => {
-          clearRound();
-          document.getElementById(el.box).classList.remove('open');
+          const box = document.getElementById(el.box);
+          box.classList.remove('open');
+          box.removeEventListener('click', handleOpenCard);
         })
         cardsFound.push(...cardsFlipped);
         clearRound();
       } else {
+        // Clear the deck and hide cards
         const openCards = document.getElementsByClassName('open');
         setTimeout(() => {
           openCards[0].children.item(1).children[0].classList.add('animated', 'wobble');
@@ -183,7 +187,10 @@ const handleOpenCard = (e) => {
 
           cardsFlipped.forEach((el) => {
             clearRound();
-            document.getElementById(el.box).classList.remove('show', 'open');
+            // Add Event listener
+            const boxEl = document.getElementById(el.box);
+            boxEl.classList.remove('show', 'open');
+            boxEl.addEventListener('click', handleOpenCard);
           })
         }, 1500)
       }
