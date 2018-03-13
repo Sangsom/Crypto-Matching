@@ -25,9 +25,7 @@ Afterwards player must find matching cryptocurrency cards. Per round player can 
 
 ## For developers
 ### Code dependencies:
-- animate.css - Used for adding animations
 - browser-sync - Used for syncing the browser when saving changes in code.
-- bulma - CSS Framework used in project.
 - gulp-sass and gulp - Gulp used to convert SASS to CSS and browser syncing with code.
 
 # License
