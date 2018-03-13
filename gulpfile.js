@@ -27,13 +27,7 @@ gulp.task("browserSync", function () {
   gulp.watch("*.html").on("change", reload);
 });
 
-gulp.task("babel", function () {
-  return gulp.src("assets/js/main.js")
-    .pipe(babel())
-    .pipe(gulp.dest("dist"))
-})
-
-gulp.task("watch", ["browserSync", "sass", "babel"], function () {
+gulp.task("watch", ["browserSync", "sass"], function () {
   // Gulp watch syntax
   gulp.watch("assets/styles/scss/**/*.scss", ["sass"]);
   // Other watchers
