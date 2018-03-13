@@ -9,16 +9,10 @@
   "author": "Rinalds <rpudulis@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "animate.css": "^3.6.1",
     "browser-sync": "^2.23.6",
-    "bulma": "^0.6.2",
     "gulp-sass": "^3.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1"
+    "gulp": "^3.9.1"
   }
 }
