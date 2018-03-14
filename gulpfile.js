@@ -1,7 +1,6 @@
 var gulp = require("gulp");
 // Require the gulp-sass plugin
 var sass = require("gulp-sass");
-const babel = require('gulp-babel');
 var browserSync = require("browser-sync").create();
 var reload = browserSync.reload;
 
