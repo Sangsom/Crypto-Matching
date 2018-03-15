@@ -28,9 +28,15 @@ body {
 
 h1.title {
   color: #faebd7; }
+  @media (max-width: 768px) {
+    h1.title {
+      font-size: 1.2rem; } }
 
 .modal-card p {
   color: #282828; }
+
+#timer {
+  text-align: left; }
 
 #grid {
   display: inline-grid;
@@ -43,6 +49,14 @@ h1.title {
   position: relative;
   -webkit-perspective: 1000;
   perspective: 1000; }
+  @media (max-width: 768px) {
+    #grid {
+      grid-template-columns: repeat(4, minmax(80px, 80px));
+      grid-auto-rows: minmax(80px, 80px); } }
+  @media (max-width: 480px) {
+    #grid {
+      grid-template-columns: repeat(4, minmax(60px, 60px));
+      grid-auto-rows: minmax(60px, 60px); } }
 
 .grid-box {
   display: flex;
