@@ -10,6 +10,7 @@ let rounds = 0;
 
 let startTime = 0;
 let endTime = 0;
+let seconds = 0;
 
 const cryptocurrencies = [
   {
@@ -87,8 +88,20 @@ const loadNewGame = () => {
   startGame();
 }
 
+const startSecondTimer = () => {
+  seconds += 1;
+  document.getElementById('seconds').innerText = seconds;
+}
+
+const startTimer = setInterval(startSecondTimer, 1000);
+
 // Reset the game grid and generate new cards
 const startGame = () => {
+  // Reset timer and start again
+  clearInterval(startTime);
+  seconds = 0;
+  startTimer;
+
   startTime = performance.now();
 
   clearGame();
@@ -207,6 +220,10 @@ const handleOpenCard = (e) => {
 const endGame = () => {
   modal.classList.add('is-active');
   endTime = performance.now();
+
+  // Stop the timer and reset seconds
+  clearInterval(startTime);
+  seconds = 0;
 
   const time = document.getElementById('time');
   const moves = document.getElementById('moves');
